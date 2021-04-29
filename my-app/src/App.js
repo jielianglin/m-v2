@@ -1,25 +1,35 @@
-import logo from "./logo.svg";
+import React from "react";
+import { CssBaseline } from "@material-ui/core";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
+import NavBar from "./components/navigation/NavBar";
+import About from "./pages/About";
+import Home from "./pages/home/Home";
+import News from "./pages/News";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Hello World!
-        </a>
-      </header>
+    <div>
+      <React.Fragment>
+        <CssBaseline></CssBaseline>
+      </React.Fragment>
+      <Router>
+        <NavBar></NavBar>
+        <main>
+          <Switch>
+            <Route path="/news">
+              <News></News>
+            </Route>
+            <Route path="/about">
+              <About></About>
+            </Route>
+
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </main>
+      </Router>
     </div>
   );
 }
-
-export default App;
